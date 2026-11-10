@@ -3,7 +3,7 @@
   <div class="header-inner">
     <a class="wordmark" routerLink="/" aria-label="CIUGB Pitch Battle, accueil" (click)="closeMenu()">
       <img class="brand-logo" src="ciugb-mark-inverse.png" alt="" aria-hidden="true" />
-      <span class="wordmark-copy"><strong>CIUGB</strong><span>Pitch Battle</span></span>
+      <span class="wordmark-copy"><strong>CIUGB</strong><span>UGB · Saint-Louis</span></span>
     </a>
     <button #menuTrigger class="menu-toggle" type="button" [attr.aria-expanded]="menuOpen()" aria-controls="primary-navigation" [attr.aria-label]="menuOpen() ? 'Fermer le menu' : 'Ouvrir le menu'" (click)="toggleMenu()"><span></span><span></span></button>
     <nav id="primary-navigation" class="primary-navigation" [class.is-open]="menuOpen()" aria-label="Navigation principale" (keydown.escape)="closeMenu(); menuTrigger.focus()">
@@ -17,25 +17,26 @@
 <main id="contenu">
   <section class="hero" aria-labelledby="hero-title">
     <div class="section-shell hero-inner">
-      <div class="hero-topline"><p>72H DU CLUB INFORMATIQUE</p><p>UNIVERSITÉ GASTON BERGER · SÉNÉGAL</p></div>
+      <div class="hero-topline"><p>LES 72H DU CLUB INFORMATIQUE DE L’UGB</p><p>SANAR · SAINT-LOUIS · SÉNÉGAL</p></div>
       <div class="hero-stage">
         <h1 id="hero-title"><span class="title-pitch">PITCH</span><span class="title-battle">BATTLE<span class="title-period">.</span></span></h1>
-        <figure class="hero-art"><img class="mic-illustration" src="images/stage-microphone.webp" alt="Microphone de scène en gros plan, éclairé de rouge." width="1024" height="1536" fetchpriority="high" /></figure>
-        <div class="hero-caption"><span>LES PROJETS ÉTUDIANTS</span><span>PRENNENT LA PAROLE.</span></div>
+        <figure class="hero-art"><img class="campus-hero-image" src="images/ugb-bibliotheque.webp" alt="La tour de la bibliothèque de l’Université Gaston Berger, avec son enseigne UGB au-dessus du campus de Sanar. Vue d’archives." width="960" height="663" fetchpriority="high" /></figure>
+        <div class="hero-caption"><span>DE SANAR À LA SCÈNE.</span><span>LES IDÉES PRENNENT LA PAROLE.</span></div>
         <div class="hero-day"><span>LE TROISIÈME JOUR<br />DES 72H DU CIUGB</span><strong>03</strong></div>
       </div>
       <div class="hero-bottom">
-        <p class="hero-hook">Votre projet.<br />Votre équipe.<br /><em>Votre voix.</em></p>
-        <p class="hero-description">Le rendez-vous des équipes étudiantes qui ont un projet à défendre. Présentez votre idée et tentez de rejoindre les finalistes du Pitch Battle.</p>
+        <p class="hero-hook">Le campus.<br />Vos projets.<br /><em>Notre énergie.</em></p>
+        <p class="hero-description">À l’UGB, les idées se croisent dans les cours, sur le campus, entre amis. Les 72H du CIUGB leur donnent rendez-vous : rassemblez votre équipe et venez défendre votre projet.</p>
         <div class="hero-actions"><a class="button button-primary" routerLink="/postuler"><span>Postuler</span><span class="button-arrow" aria-hidden="true">↗</span></a><a class="hero-discover" href="#concept">Découvrir le concours <span aria-hidden="true">↓</span></a></div>
       </div>
+      <p class="hero-photo-credit">Tour de la bibliothèque de l’UGB · vue d’archives · <a href="https://commons.wikimedia.org/wiki/File:LaTourUGBVueSudOuest.jpg" target="_blank" rel="noopener noreferrer">Maissambaye / Wikimedia Commons ↗</a></p>
     </div>
   </section>
 
   <section id="concept" class="concept-section section-shell" aria-labelledby="concept-title">
-    <div class="section-label"><span>01 / LE CONCEPT</span><span>DU CAMPUS À LA SCÈNE</span></div>
-    <h2 id="concept-title" class="concept-title">Il y a des idées<br />qui méritent <em>qu’on<br class="desktop-break" /> les entende.</em></h2>
-    <div class="concept-bottom"><p class="concept-credit">Un événement du<br /><strong>Club Informatique<br />de l’Université Gaston Berger.</strong></p><div class="concept-copy"><p>Un problème à résoudre. Une solution à proposer. Et une équipe pour la porter.</p><p>Le Pitch Battle donne aux projets étudiants une place sur scène. Les candidatures sont examinées par les organisateurs ; les finalistes retenus présentent leur projet le troisième jour des 72H du CIUGB.</p><a class="text-link" href="#parcours">Voir le parcours de sélection <span aria-hidden="true">↗</span></a></div></div>
+    <div class="section-label"><span>01 / LE CONCEPT</span><span>L’ESPRIT DE SANAR</span></div>
+    <h2 id="concept-title" class="concept-title">Sanar a des idées.<br /><em>Faisons-les<br />entendre.</em></h2>
+    <div class="concept-bottom"><p class="concept-credit">Un événement du<br /><strong>Club Informatique<br />de l’Université Gaston Berger.</strong></p><div class="concept-copy"><p>Sanaroises, Sanarois : un projet imaginé entre deux cours peut devenir une idée qu’on défend ensemble.</p><p>Porté par le Club Informatique de l’Université Gaston Berger, le Pitch Battle prolonge l’énergie du campus : échanger, construire et oser présenter ce qu’on imagine. Les organisateurs examinent les candidatures, puis les finalistes présentent leur projet le troisième jour des 72H du CIUGB.</p><a class="text-link" href="#parcours">Voir le parcours de sélection <span aria-hidden="true">↗</span></a></div></div>
   </section>
 
   <section class="pitch-section section-shell" aria-labelledby="pitch-title">
@@ -72,8 +73,8 @@
     </div></div>
   </section>
 
-  <section class="finalists-section section-shell" aria-labelledby="finalists-title"><div><p class="eyebrow">LA SÉLECTION OFFICIELLE</p><h2 id="finalists-title">Qui prendra<br />le micro ?</h2><p>Les équipes finalistes seront annoncées après la sélection et la publication officielle par les organisateurs.</p><a class="text-link" routerLink="/finalistes">Consulter la page des finalistes <span aria-hidden="true">↗</span></a></div><div class="finalists-visual" aria-hidden="true"><span>LA PROCHAINE<br />GÉNÉRATION<br />A DES IDÉES.</span><span class="finalists-symbol">↗</span><span class="finalists-visual-footer">PITCH BATTLE / CIUGB</span></div></section>
+  <section class="finalists-section section-shell" aria-labelledby="finalists-title"><div><p class="eyebrow">LA SÉLECTION OFFICIELLE</p><h2 id="finalists-title">Qui prendra<br />le micro ?</h2><p>Les équipes finalistes seront annoncées après la sélection et la publication officielle par les organisateurs.</p><a class="text-link" routerLink="/finalistes">Consulter la page des finalistes <span aria-hidden="true">↗</span></a></div><figure class="campus-portrait"><img src="images/ugb-campus.webp" alt="Bâtiments aux façades ocre et jardin du campus de l’Université Gaston Berger. Vue d’archives." width="960" height="720" loading="lazy" /><span class="campus-portrait-title" aria-hidden="true">SANAR.</span><figcaption><span>UNIVERSITÉ GASTON BERGER</span><a href="https://commons.wikimedia.org/wiki/File:Campus2.JPG" target="_blank" rel="noopener noreferrer">Vue d’archives · Maissambaye ↗</a></figcaption></figure></section>
 
-  <section class="closing-section" aria-labelledby="closing-title"><div class="section-shell"><div class="closing-top"><p>À VOUS DE FAIRE LA SUITE.</p><span>72H DU CIUGB / PITCH BATTLE</span></div><div class="closing-content"><h2 id="closing-title">PRENEZ<br />LA PAROLE.</h2><a class="closing-apply" routerLink="/postuler"><span>Déposer<br />ma candidature</span><span aria-hidden="true">↗</span></a></div></div></section>
+  <section class="closing-section" aria-labelledby="closing-title"><div class="section-shell"><div class="closing-top"><p>L’ÉNERGIE DE SANAR. LES IDÉES DE DEMAIN.</p><span>72H DU CIUGB / PITCH BATTLE</span></div><div class="closing-content"><h2 id="closing-title">PRENEZ<br />LA PAROLE.</h2><a class="closing-apply" routerLink="/postuler"><span>Déposer<br />ma candidature</span><span aria-hidden="true">↗</span></a></div></div></section>
 </main>
-<footer class="site-footer"><div class="section-shell footer-inner"><a class="wordmark" routerLink="/" aria-label="CIUGB Pitch Battle, accueil"><img class="brand-logo" src="ciugb-mark.png" alt="" aria-hidden="true" /><span class="wordmark-copy"><strong>CIUGB</strong><span>Pitch Battle</span></span></a><p>Club Informatique de l’Université Gaston Berger<br /><span>Des projets étudiants. Une scène pour les défendre.</span></p><a class="footer-top" href="#contenu">Retour en haut <span aria-hidden="true">↑</span></a></div></footer>
+<footer class="site-footer"><div class="section-shell footer-inner"><a class="wordmark" routerLink="/" aria-label="CIUGB Pitch Battle, accueil"><img class="brand-logo" src="ciugb-mark.png" alt="" aria-hidden="true" /><span class="wordmark-copy"><strong>CIUGB</strong><span>UGB · Saint-Louis</span></span></a><p>Club Informatique de l’Université Gaston Berger<br /><span>Sanar · Saint-Louis, Sénégal.</span></p><a class="footer-top" href="#contenu">Retour en haut <span aria-hidden="true">↑</span></a></div></footer>

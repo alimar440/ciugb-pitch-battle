@@ -16,12 +16,12 @@ import { RouterLink } from '@angular/router';
       </header>
 
       <section class="selection-heading" aria-labelledby="finalists-title">
-        <p class="edition-line">72H DU CIUGB <span>UNIVERSITÉ GASTON BERGER</span></p>
+        <p class="edition-line">72H DU CIUGB <span>SANAR · SAINT-LOUIS</span></p>
         <div class="title-layout">
           <h1 id="finalists-title">Les<br /><span>finalistes.</span></h1>
           <p class="selection-label">SÉLECTION<br />OFFICIELLE</p>
         </div>
-        <p class="heading-caption">Les projets étudiants prennent la parole.</p>
+        <p class="heading-caption">Le Pitch Battle du Club Informatique de l’Université Gaston Berger.</p>
       </section>
 
       <section class="publication" aria-labelledby="publication-title">
