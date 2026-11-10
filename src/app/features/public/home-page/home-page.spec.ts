@@ -3,6 +3,28 @@ import { provideRouter } from '@angular/router';
 import { HomePage } from './home-page';
 
 describe('HomePage', () => {
+  it('closes the mobile navigation with Escape and returns focus to its trigger', async () => {
+    await TestBed.configureTestingModule({
+      imports: [HomePage],
+      providers: [provideRouter([])],
+    }).compileComponents();
+
+    const fixture = TestBed.createComponent(HomePage);
+    fixture.detectChanges();
+    const trigger = fixture.nativeElement.querySelector('.menu-toggle') as HTMLButtonElement;
+    const navigation = fixture.nativeElement.querySelector('nav') as HTMLElement;
+    trigger.click();
+    fixture.detectChanges();
+    expect(trigger.getAttribute('aria-expanded')).toBe('true');
+
+    (navigation.querySelector('a') as HTMLAnchorElement).focus();
+    navigation.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    fixture.detectChanges();
+
+    expect(trigger.getAttribute('aria-expanded')).toBe('false');
+    expect(document.activeElement).toBe(trigger);
+  });
+
   it('shows a visible application button that opens the application route', async () => {
     await TestBed.configureTestingModule({
       imports: [HomePage],
@@ -14,11 +36,11 @@ describe('HomePage', () => {
     const applyButton = fixture.nativeElement.querySelector('a.button-primary') as HTMLAnchorElement;
 
     expect(applyButton).toBeTruthy();
-    expect(applyButton.textContent?.trim()).toBe('Postuler');
+    expect(applyButton.textContent).toContain('Postuler');
     expect(applyButton.getAttribute('href')).toBe('/postuler');
   });
 
-  it('switches to the dark navigation appearance after scrolling', async () => {
+  it('tracks scrolling while keeping the inverse brand readable on the dark header', async () => {
     await TestBed.configureTestingModule({
       imports: [HomePage],
       providers: [provideRouter([])],

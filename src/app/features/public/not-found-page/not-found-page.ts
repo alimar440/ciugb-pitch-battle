@@ -7,10 +7,17 @@ import { RouterLink } from '@angular/router';
   styleUrl: './not-found-page.css',
   template: `
     <main class="not-found-page">
-      <p class="eyebrow">Erreur 404</p>
-      <h1>Page introuvable</h1>
-      <p>Cette adresse ne correspond à aucune page du site.</p>
-      <a routerLink="/">Revenir à l’accueil</a>
+      <header class="page-masthead"><a routerLink="/">CIUGB / PITCH BATTLE</a><span>72H DU CIUGB</span></header>
+      <div class="error-content">
+        <p class="error-number" aria-hidden="true">404</p>
+        <div class="error-copy">
+          <p class="eyebrow">Erreur 404</p>
+          <h1>Cette page<br />n’existe pas.</h1>
+          <p class="description">Cette adresse ne correspond à aucune page du site. Le Pitch Battle se poursuit à l’accueil.</p>
+          <a class="home-link" routerLink="/">Revenir au concours <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <footer>CLUB INFORMATIQUE DE L’UNIVERSITÉ GASTON BERGER</footer>
     </main>
   `,
 })

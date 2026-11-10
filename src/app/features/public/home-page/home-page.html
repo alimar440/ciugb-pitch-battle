@@ -1,178 +1,79 @@
-<a class="skip-link" href="#contenu">Passer au contenu</a>
-
+﻿<a class="skip-link" href="#contenu">Passer au contenu</a>
 <header class="site-header" [class.is-scrolled]="scrolled()">
   <div class="header-inner">
     <a class="wordmark" routerLink="/" aria-label="CIUGB Pitch Battle, accueil" (click)="closeMenu()">
-      <img class="brand-logo" [src]="scrolled() ? 'ciugb-mark-inverse.png' : 'ciugb-mark.png'" alt="" aria-hidden="true" />
+      <img class="brand-logo" src="ciugb-mark-inverse.png" alt="" aria-hidden="true" />
       <span class="wordmark-copy"><strong>CIUGB</strong><span>Pitch Battle</span></span>
     </a>
-
-    <button
-      class="menu-toggle"
-      type="button"
-      [attr.aria-expanded]="menuOpen()"
-      aria-controls="primary-navigation"
-      [attr.aria-label]="menuOpen() ? 'Fermer le menu' : 'Ouvrir le menu'"
-      (click)="toggleMenu()"
-    >
-      <span></span><span></span>
-    </button>
-
-    <nav
-      id="primary-navigation"
-      class="primary-navigation"
-      [class.is-open]="menuOpen()"
-      aria-label="Navigation principale"
-    >
+    <button #menuTrigger class="menu-toggle" type="button" [attr.aria-expanded]="menuOpen()" aria-controls="primary-navigation" [attr.aria-label]="menuOpen() ? 'Fermer le menu' : 'Ouvrir le menu'" (click)="toggleMenu()"><span></span><span></span></button>
+    <nav id="primary-navigation" class="primary-navigation" [class.is-open]="menuOpen()" aria-label="Navigation principale" (keydown.escape)="closeMenu(); menuTrigger.focus()">
       @for (item of content.navigation; track item.href) {
         <a [href]="item.href" (click)="closeMenu()">{{ item.label }}</a>
       }
-      <a class="nav-finalists" routerLink="/finalistes" (click)="closeMenu()">Les finalistes</a>
+      <a class="nav-finalists" routerLink="/finalistes" (click)="closeMenu()">Les finalistes <span aria-hidden="true">↗</span></a>
     </nav>
   </div>
 </header>
-
 <main id="contenu">
-  <section class="hero section-shell" aria-labelledby="hero-title">
-    <div class="hero-copy" data-aos="fade-up" data-aos-duration="650">
-      <p class="eyebrow">{{ content.eventContext }}</p>
-      <h1 id="hero-title">Pitch Battle<br /><span>du CIUGB</span></h1>
-      <p class="hero-description">{{ content.heroDescription }}</p>
-      <div class="hero-actions">
-        <a class="button button-primary" routerLink="/postuler">Postuler</a>
-        <div class="hero-secondary-actions">
-          <a class="text-link" href="#parcours">Découvrir le parcours</a>
-          <a class="text-link" routerLink="/finalistes">Consulter les finalistes</a>
-        </div>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="section-shell hero-inner">
+      <div class="hero-topline"><p>72H DU CLUB INFORMATIQUE</p><p>UNIVERSITÉ GASTON BERGER · SÉNÉGAL</p></div>
+      <div class="hero-stage">
+        <h1 id="hero-title"><span class="title-pitch">PITCH</span><span class="title-battle">BATTLE<span class="title-period">.</span></span></h1>
+        <figure class="hero-art"><img class="mic-illustration" src="images/stage-microphone.webp" alt="Microphone de scène en gros plan, éclairé de rouge." width="1024" height="1536" fetchpriority="high" /></figure>
+        <div class="hero-caption"><span>LES PROJETS ÉTUDIANTS</span><span>PRENNENT LA PAROLE.</span></div>
+        <div class="hero-day"><span>LE TROISIÈME JOUR<br />DES 72H DU CIUGB</span><strong>03</strong></div>
+      </div>
+      <div class="hero-bottom">
+        <p class="hero-hook">Votre projet.<br />Votre équipe.<br /><em>Votre voix.</em></p>
+        <p class="hero-description">Le rendez-vous des équipes étudiantes qui ont un projet à défendre. Présentez votre idée et tentez de rejoindre les finalistes du Pitch Battle.</p>
+        <div class="hero-actions"><a class="button button-primary" routerLink="/postuler"><span>Postuler</span><span class="button-arrow" aria-hidden="true">↗</span></a><a class="hero-discover" href="#concept">Découvrir le concours <span aria-hidden="true">↓</span></a></div>
       </div>
     </div>
-
-    <aside class="event-summary" aria-label="Informations sur le Pitch Battle" data-aos="fade-left" data-aos-duration="700" data-aos-delay="100">
-      <p class="summary-label">Le rendez-vous</p>
-      <p class="summary-title">{{ content.organizer }}</p>
-      <p class="summary-context">{{ content.eventContext }}</p>
-      <dl class="summary-facts">
-        <div><dt>Date</dt><dd>{{ content.eventDate }}</dd></div>
-        <div><dt>Lieu</dt><dd>{{ content.venue }}</dd></div>
-      </dl>
-    </aside>
   </section>
 
   <section id="concept" class="concept-section section-shell" aria-labelledby="concept-title">
-    <div class="section-heading" data-aos="fade-up">
-      <p class="eyebrow">Le concept</p>
-      <h2 id="concept-title">Présenter un projet.<br /><em>Le défendre.</em></h2>
-    </div>
-    <div class="concept-copy" data-aos="fade-up" data-aos-delay="100">
-      <p class="lead-copy">
-        Le Pitch Battle met les projets étudiants au centre de la scène. Chaque équipe présente une idée, le problème auquel elle répond et la solution qu’elle imagine.
-      </p>
-      <p class="body-copy">
-        Les organisateurs examinent les candidatures, présélectionnent les équipes et retiennent les finalistes qui pitcheront lors des 72H du CIUGB.
-      </p>
-      <a class="text-link text-link-accent" href="#parcours">Voir les étapes</a>
+    <div class="section-label"><span>01 / LE CONCEPT</span><span>DU CAMPUS À LA SCÈNE</span></div>
+    <h2 id="concept-title" class="concept-title">Il y a des idées<br />qui méritent <em>qu’on<br class="desktop-break" /> les entende.</em></h2>
+    <div class="concept-bottom"><p class="concept-credit">Un événement du<br /><strong>Club Informatique<br />de l’Université Gaston Berger.</strong></p><div class="concept-copy"><p>Un problème à résoudre. Une solution à proposer. Et une équipe pour la porter.</p><p>Le Pitch Battle donne aux projets étudiants une place sur scène. Les candidatures sont examinées par les organisateurs ; les finalistes retenus présentent leur projet le troisième jour des 72H du CIUGB.</p><a class="text-link" href="#parcours">Voir le parcours de sélection <span aria-hidden="true">↗</span></a></div></div>
+  </section>
+
+  <section class="pitch-section section-shell" aria-labelledby="pitch-title">
+    <div class="pitch-heading"><p class="eyebrow">LA CANDIDATURE</p><h2 id="pitch-title">Allons à l’essentiel.</h2><p>Trois points pour comprendre votre projet.</p></div>
+    <div class="pitch-list">
+      @for (item of content.pitchElements; track item.title; let index = $index) {
+        <article class="pitch-item"><span class="pitch-index">0{{ index + 1 }}</span><h3>{{ item.title }}</h3><p>{{ item.description }}</p><span class="pitch-item-mark" aria-hidden="true">{{ index === 0 ? '?' : index === 1 ? '→' : '+' }}</span></article>
+      }
     </div>
   </section>
 
-  <section class="pitch-section" aria-labelledby="pitch-title">
-    <div class="section-shell pitch-inner">
-      <div class="pitch-intro" data-aos="fade-up">
-        <p class="eyebrow">Préparer sa candidature</p>
-        <h2 id="pitch-title">Ce que le comité<br /><em>doit comprendre.</em></h2>
-        <p>Présentez clairement votre projet et les personnes qui le portent.</p>
-      </div>
-      <div class="pitch-list" data-aos="fade-up" data-aos-delay="100">
-        @for (item of content.pitchElements; track item.title) {
-          <article class="pitch-item">
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
-          </article>
+  <section id="parcours" class="journey-section" aria-labelledby="journey-title">
+    <div class="section-shell journey-inner">
+      <div class="journey-heading"><p class="eyebrow">02 / LE PARCOURS</p><h2 id="journey-title">AVANT<br />LA <span>SCÈNE.</span></h2><p>Du dépôt de votre projet<br />au jour du Pitch Battle.</p><a class="text-link" routerLink="/postuler">Préparer ma candidature <span aria-hidden="true">↗</span></a></div>
+      <div class="journey-steps">
+        @for (step of content.steps; track step.number) {
+          <article class="journey-step"><span class="step-number" aria-hidden="true">0{{ step.number }}</span><div class="step-copy"><span class="step-overline">ÉTAPE {{ step.number }}</span><h3>{{ step.title }}</h3><p>{{ step.description }}</p><span class="step-note">{{ step.note }}</span></div></article>
         }
+        <p class="journey-disclaimer">Les modalités détaillées seront précisées dans le règlement officiel.</p>
       </div>
     </div>
   </section>
 
-  <section id="parcours" class="journey-section section-shell" aria-labelledby="journey-title">
-    <div class="journey-heading">
-      <div data-aos="fade-up">
-        <p class="eyebrow">Comment participer</p>
-        <h2 id="journey-title">Les étapes</h2>
-      </div>
-      <p class="journey-aside" data-aos="fade-up" data-aos-delay="100">Les modalités détaillées seront précisées dans le règlement officiel.</p>
+  <section id="informations" class="practical-section section-shell" aria-labelledby="info-title">
+    <div class="section-label"><span>03 / INFORMATIONS PRATIQUES</span><span>LE POINT AVANT DE SE LANCER</span></div>
+    <div class="practical-grid">
+      <div class="info-heading"><h2 id="info-title">On fait<br />le point.</h2><p>Le comité prépare les derniers détails. Les informations confirmées seront publiées ici.</p><div id="contact" class="contact-block"><p class="eyebrow">CONTACT DU COMITÉ</p><p>Une question sur le concours ?</p><strong>{{ content.committeeContact }}</strong></div></div>
+      <dl class="info-list"><div class="info-row"><dt>Date du Pitch Battle</dt><dd>{{ content.eventDate }}</dd></div><div class="info-row"><dt>Date limite d’inscription</dt><dd>{{ content.registrationDeadline }}</dd></div><div class="info-row"><dt>Lieu</dt><dd>{{ content.venue }}</dd></div><div class="info-row"><dt>Conditions de participation</dt><dd>{{ content.eligibility }}</dd></div></dl>
     </div>
-    <div class="journey-steps" data-aos="fade-up">
-      @for (step of content.steps; track step.number) {
-        <article class="journey-step">
-          <span class="step-number">Étape {{ step.number }}</span>
-          <h3>{{ step.title }}</h3>
-          <p>{{ step.description }}</p>
-          <span class="step-note">{{ step.note }}</span>
-        </article>
-      }
-    </div>
-  </section>
-
-  <section id="informations" class="info-section" aria-labelledby="info-title">
-    <div class="section-shell info-layout">
-      <div class="info-heading" data-aos="fade-up">
-        <p class="eyebrow">Informations pratiques</p>
-        <h2 id="info-title">À retenir</h2>
-        <p>Les informations seront complétées après confirmation par le comité.</p>
-      </div>
-      <dl class="info-list" data-aos="fade-up" data-aos-delay="100">
-        <div class="info-row"><dt>Date du Pitch Battle</dt><dd>{{ content.eventDate }}</dd></div>
-        <div class="info-row"><dt>Date limite d’inscription</dt><dd>{{ content.registrationDeadline }}</dd></div>
-        <div class="info-row"><dt>Lieu</dt><dd>{{ content.venue }}</dd></div>
-        <div class="info-row"><dt>Conditions de participation</dt><dd>{{ content.eligibility }}</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <section class="faq-section section-shell" aria-labelledby="faq-title">
-    <div class="faq-heading" data-aos="fade-up">
-      <p class="eyebrow">Questions fréquentes</p>
-      <h2 id="faq-title">Vos questions</h2>
-    </div>
-    <div class="faq-list" data-aos="fade-up" data-aos-delay="100">
+    <div class="faq-layout"><h3>Vous vous<br />demandez peut-être.</h3><div class="faq-list">
       @for (item of content.faqs; track item.question) {
-        <details class="faq-item">
-          <summary><span>{{ item.question }}</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-          <p>{{ item.answer }}</p>
-        </details>
+        <details class="faq-item"><summary><span>{{ item.question }}</span><span class="faq-toggle" aria-hidden="true"></span></summary><p>{{ item.answer }}</p></details>
       }
-    </div>
+    </div></div>
   </section>
 
-  <section id="contact" class="contact-section section-shell" aria-labelledby="contact-title">
-    <div data-aos="fade-up">
-      <p class="eyebrow">Contact</p>
-      <h2 id="contact-title">Besoin d’une information ?</h2>
-    </div>
-    <div class="contact-copy" data-aos="fade-up" data-aos-delay="100">
-      <p>Les coordonnées du comité seront publiées dès qu’elles seront confirmées.</p>
-      <span class="contact-value">{{ content.committeeContact }}</span>
-      <a class="text-link text-link-accent" href="#informations">Consulter les informations</a>
-    </div>
-  </section>
+  <section class="finalists-section section-shell" aria-labelledby="finalists-title"><div><p class="eyebrow">LA SÉLECTION OFFICIELLE</p><h2 id="finalists-title">Qui prendra<br />le micro ?</h2><p>Les équipes finalistes seront annoncées après la sélection et la publication officielle par les organisateurs.</p><a class="text-link" routerLink="/finalistes">Consulter la page des finalistes <span aria-hidden="true">↗</span></a></div><div class="finalists-visual" aria-hidden="true"><span>LA PROCHAINE<br />GÉNÉRATION<br />A DES IDÉES.</span><span class="finalists-symbol">↗</span><span class="finalists-visual-footer">PITCH BATTLE / CIUGB</span></div></section>
 
-  <section class="finalists-cta" aria-labelledby="finalists-title">
-    <div class="section-shell finalists-inner" data-aos="fade-up">
-      <div>
-        <p class="eyebrow"><img class="brand-logo brand-logo-inverse" src="ciugb-mark-inverse.png" alt="" aria-hidden="true" />Publication officielle</p>
-        <h2 id="finalists-title">Les finalistes seront annoncés ici.</h2>
-      </div>
-      <a class="button button-light" routerLink="/finalistes">Page des finalistes</a>
-    </div>
-  </section>
+  <section class="closing-section" aria-labelledby="closing-title"><div class="section-shell"><div class="closing-top"><p>À VOUS DE FAIRE LA SUITE.</p><span>72H DU CIUGB / PITCH BATTLE</span></div><div class="closing-content"><h2 id="closing-title">PRENEZ<br />LA PAROLE.</h2><a class="closing-apply" routerLink="/postuler"><span>Déposer<br />ma candidature</span><span aria-hidden="true">↗</span></a></div></div></section>
 </main>
-
-<footer class="site-footer">
-  <div class="section-shell footer-inner">
-    <a class="wordmark" routerLink="/" aria-label="CIUGB Pitch Battle, accueil">
-      <img class="brand-logo" src="ciugb-mark.png" alt="" aria-hidden="true" />
-      <span class="wordmark-copy"><strong>CIUGB</strong><span>Pitch Battle</span></span>
-    </a>
-    <p>{{ content.eventContext }}</p>
-    <a class="footer-top" href="#contenu">Retour en haut</a>
-  </div>
-</footer>
+<footer class="site-footer"><div class="section-shell footer-inner"><a class="wordmark" routerLink="/" aria-label="CIUGB Pitch Battle, accueil"><img class="brand-logo" src="ciugb-mark.png" alt="" aria-hidden="true" /><span class="wordmark-copy"><strong>CIUGB</strong><span>Pitch Battle</span></span></a><p>Club Informatique de l’Université Gaston Berger<br /><span>Des projets étudiants. Une scène pour les défendre.</span></p><a class="footer-top" href="#contenu">Retour en haut <span aria-hidden="true">↑</span></a></div></footer>
