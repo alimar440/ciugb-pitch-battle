@@ -1,59 +1,32 @@
-# CiugbPitchBattle
+# CIUGB Pitch Battle
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.6.
+Plateforme du Pitch Battle des 72H du Club Informatique de l'Université Gaston Berger. Le périmètre produit, le modèle de données et les décisions de sécurité sont suivis dans [le cadrage du Sprint 0](docs/SPRINT-0.md) ; la présentation publique est décrite dans [le Sprint 1](docs/SPRINT-1.md).
 
-## Development server
+## Prérequis
 
-To start a local development server, run:
+- Node.js `^22.22.3`, `^24.15.0` ou `>=26.0.0` pour Angular CLI 22.2
+- npm 10.9 ou version compatible avec le lockfile
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Développement local
 
 ```bash
-ng generate component component-name
+npm ci
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+L'application est servie par Angular CLI sur `http://localhost:4200/`.
+
+## Vérifications
 
 ```bash
-ng generate --help
+npm run build
+npm test
 ```
 
-## Building
+## Architecture
 
-To build the project run:
+Le code Angular est organisé par domaines : `core/` pour les services et gardes, `shared/` pour les éléments réutilisables et `features/` pour les fonctionnalités publiques, l'inscription et l'administration. Les décisions métier et Supabase restent documentées dans le cadrage jusqu'à confirmation des règles du concours.
 
-```bash
-ng build
-```
+## Sécurité
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Ne jamais stocker de clés secrètes dans le code client ou dans le dépôt. Les fichiers `.env` locaux sont ignorés par Git ; toute donnée consommée par Angular est publique par nature. Les accès aux candidatures doivent être protégés par Supabase RLS et par des opérations serveur autorisées.

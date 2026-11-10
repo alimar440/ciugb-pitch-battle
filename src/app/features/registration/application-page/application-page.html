@@ -1,0 +1,86 @@
+<main class="application-shell">
+  <a class="back-link" routerLink="/">← Retour à l’accueil</a>
+  <header class="application-heading">
+    <p class="eyebrow">Candidature Pitch Battle</p>
+    <h1>Présentez votre équipe et votre projet.</h1>
+    <p>Les champs marqués d’un astérisque sont obligatoires. Les modalités officielles s’affichent lorsqu’elles sont configurées par le comité.</p>
+  </header>
+
+  @if (confirmation()) {
+    <section class="application-card confirmation" role="status">
+      <p class="eyebrow">Candidature reçue</p>
+      <h2>Votre dossier a été transmis.</h2>
+      <p>Conservez cette référence pour vos échanges avec le comité :</p>
+      <strong class="reference">{{ confirmation() }}</strong>
+      <a routerLink="/">Retour à l’accueil</a>
+    </section>
+  } @else {
+    @if (!configured) {
+      <p class="notice" role="status">Le formulaire sera disponible après la configuration de la plateforme par le comité.</p>
+    } @else if (registrationInfo() && !registrationInfo()?.registrationOpen) {
+      <p class="notice" role="status">Les inscriptions sont actuellement fermées.</p>
+    }
+
+    <nav class="step-indicator" aria-label="Étapes du formulaire">
+      <span [class.active-step]="step() === 0">1 · Équipe</span>
+      <span [class.active-step]="step() === 1">2 · Projet</span>
+      <span [class.active-step]="step() === 2">3 · Vérification</span>
+    </nav>
+
+    <form class="application-card" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      @if (step() === 0) {
+        <section aria-labelledby="team-title">
+          <h2 id="team-title">Votre équipe</h2>
+          <label>Nom de l’équipe *<input formControlName="teamName" autocomplete="organization" maxlength="120" required /></label>
+          @if (form.controls.teamName.touched && form.controls.teamName.invalid) { <p class="field-error">Saisissez un nom d’équipe (120 caractères maximum).</p> }
+          <div formArrayName="members" class="member-list">
+            @for (member of members.controls; track $index; let index = $index) {
+              <fieldset [formGroupName]="index" class="member-card">
+                <legend>{{ index === 0 ? 'Responsable de candidature' : 'Membre ' + (index + 1) }}{{ index === 0 ? ' *' : '' }}</legend>
+                <label>Nom complet *<input formControlName="fullName" autocomplete="name" maxlength="160" required /></label>
+                <label>Adresse e-mail {{ index === 0 ? '*' : '' }}<input formControlName="email" type="email" autocomplete="email" maxlength="254" [required]="index === 0" /></label>
+                <label>Téléphone {{ index === 0 ? '*' : '' }}<input formControlName="phone" type="tel" autocomplete="tel" maxlength="40" [required]="index === 0" /></label>
+                @if (index > 0) { <button class="remove-member" type="button" (click)="removeMember(index)">Retirer ce membre</button> }
+              </fieldset>
+            }
+          </div>
+          <button class="secondary-button" type="button" (click)="addMember()">Ajouter un membre</button>
+        </section>
+      }
+
+      @if (step() === 1) {
+        <section aria-labelledby="project-title-heading">
+          <h2 id="project-title-heading">Votre projet</h2>
+          <label>Nom du projet *<input formControlName="projectTitle" maxlength="160" required /></label>
+          <label>Catégorie (facultatif)<input formControlName="category" maxlength="100" /></label>
+          <label>Résumé du projet *<textarea formControlName="summary" rows="4" maxlength="1000" required></textarea><span class="field-hint">1 000 caractères maximum.</span></label>
+          <label>Problématique adressée *<textarea formControlName="problem" rows="4" maxlength="2000" required></textarea><span class="field-hint">2 000 caractères maximum.</span></label>
+          <label>Solution proposée *<textarea formControlName="solution" rows="4" maxlength="2000" required></textarea><span class="field-hint">2 000 caractères maximum.</span></label>
+        </section>
+      }
+
+      @if (step() === 2) {
+        <section aria-labelledby="review-title">
+          <h2 id="review-title">Vérifiez et confirmez</h2>
+          @if (registrationInfo(); as info) {
+            <div class="official-terms"><h3>Règlement {{ info.rulesVersion }}</h3><p>{{ info.rulesText }}</p></div>
+            <div class="official-terms"><h3>Confidentialité {{ info.privacyVersion }}</h3><p>{{ info.privacyText }}</p></div>
+          } @else {
+            <p class="notice">Le règlement et la notice de confidentialité ne sont pas encore disponibles. L’envoi reste désactivé.</p>
+          }
+          <label class="consent"><input type="checkbox" formControlName="rulesAccepted" /> J’accepte le règlement affiché ci-dessus. *</label>
+          <label class="consent"><input type="checkbox" formControlName="privacyAccepted" /> J’ai lu et j’accepte la notice de confidentialité affichée ci-dessus. *</label>
+          <div id="turnstile-widget" class="challenge-widget" aria-label="Vérification anti-robot"></div>
+          <label class="honeypot" aria-hidden="true">Ne pas remplir<input formControlName="website" tabindex="-1" autocomplete="off" /></label>
+        </section>
+      }
+
+      @if (error()) { <p class="form-error" role="alert">{{ error() }}</p> }
+      <div class="form-actions">
+        @if (step() > 0) { <button class="secondary-button" type="button" (click)="previous()">Précédent</button> }
+        @if (step() < 2) { <button class="primary-button" type="button" (click)="next()">Continuer</button> }
+        @if (step() === 2) { <button class="primary-button" type="submit" [disabled]="busy() || !configured || !registrationInfo()?.registrationOpen || !registrationInfo()?.rulesText || !registrationInfo()?.privacyText || !challengeToken">{{ busy() ? 'Envoi en cours…' : 'Envoyer la candidature' }}</button> }
+      </div>
+    </form>
+  }
+</main>
