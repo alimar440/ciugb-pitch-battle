@@ -26,6 +26,8 @@ export class ApplicationPage {
   protected readonly busy = signal(false);
   protected readonly error = signal('');
   protected readonly confirmation = signal('');
+  protected readonly challengeError = signal('');
+  protected readonly challengeToken = signal('');
   protected readonly registrationInfo = signal<RegistrationInfo | null>(null);
   protected readonly configured = Boolean(this.baseUrl && this.config.supabaseAnonKey);
   protected readonly form = new FormBuilder().group({
@@ -38,6 +40,7 @@ export class ApplicationPage {
     members: new FormArray([this.createMember(true)]),
     rulesAccepted: [false, Validators.requiredTrue],
     privacyAccepted: [false, Validators.requiredTrue],
+    finalistPublicationConsent: [false],
     website: [''],
   });
 
@@ -79,9 +82,13 @@ export class ApplicationPage {
         this.members.controls.forEach((member) => member.markAllAsTouched());
         return;
       }
+      if (!info?.registrationOpen || !info.rulesText || !info.privacyText) {
+        this.error.set('Les inscriptions ne sont pas encore ouvertes par le comité. Les modalités officielles seront affichées avant l’envoi.');
+        return;
+      }
     }
     this.step.update((value) => Math.min(value + 1, 2));
-    if (this.step() === 2) queueMicrotask(() => this.renderChallenge());
+    if (this.step() === 2) window.setTimeout(() => this.renderChallenge());
   }
 
   protected previous(): void {
@@ -109,7 +116,7 @@ export class ApplicationPage {
         },
         body: JSON.stringify({
           ...this.form.getRawValue(),
-          challengeToken: this.challengeToken,
+          challengeToken: this.challengeToken(),
           rulesVersion: this.registrationInfo()?.rulesVersion,
           privacyVersion: this.registrationInfo()?.privacyVersion,
         }),
@@ -118,6 +125,7 @@ export class ApplicationPage {
       if (!response.ok || !result.reference) throw new Error(result.error ?? 'La candidature n’a pas pu être enregistrée.');
       this.confirmation.set(result.reference);
       this.form.reset();
+      this.challengeToken.set('');
     } catch (cause) {
       this.error.set(cause instanceof Error ? cause.message : 'Une erreur est survenue. Réessayez plus tard.');
     } finally {
@@ -125,17 +133,42 @@ export class ApplicationPage {
     }
   }
 
-  private challengeToken = '';
   private challengeWidgetId = '';
+  private challengeRenderAttempts = 0;
+  private turnstileScriptRequested = false;
 
   private renderChallenge(): void {
-    if (!this.config.turnstileSiteKey || !window.turnstile || this.challengeWidgetId) return;
-    this.challengeWidgetId = window.turnstile.render('#turnstile-widget', {
-      sitekey: this.config.turnstileSiteKey,
-      action: 'application',
-      callback: (token) => { this.challengeToken = token; },
-      'expired-callback': () => { this.challengeToken = ''; },
-    });
+    if (!this.config.turnstileSiteKey || this.challengeWidgetId) return;
+    if (!document.querySelector('#turnstile-widget')) {
+      if (this.challengeRenderAttempts++ < 10) window.setTimeout(() => this.renderChallenge(), 50);
+      return;
+    }
+    if (!window.turnstile) {
+      if (!this.turnstileScriptRequested) this.loadTurnstileScript();
+      if (this.challengeRenderAttempts++ < 40) window.setTimeout(() => this.renderChallenge(), 250);
+      else this.challengeError.set('La vérification anti-robot ne s’est pas chargée. Vérifiez votre connexion puis rechargez la page.');
+      return;
+    }
+    try {
+      this.challengeWidgetId = window.turnstile.render('#turnstile-widget', {
+        sitekey: this.config.turnstileSiteKey,
+        action: 'application',
+        callback: (token) => { this.challengeToken.set(token); },
+        'expired-callback': () => { this.challengeToken.set(''); },
+      });
+    } catch {
+      this.challengeError.set('La vérification anti-robot ne peut pas démarrer. Rechargez la page puis réessayez.');
+    }
+  }
+
+  private loadTurnstileScript(): void {
+    this.turnstileScriptRequested = true;
+    const script = document.createElement('script');
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+    script.async = true;
+    script.onload = () => this.renderChallenge();
+    script.onerror = () => this.challengeError.set('Impossible de charger la vérification anti-robot. Désactivez un éventuel bloqueur de contenu puis rechargez la page.');
+    document.head.append(script);
   }
 
   private async loadRegistrationInfo(): Promise<void> {

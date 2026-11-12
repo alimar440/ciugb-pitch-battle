@@ -40,6 +40,21 @@ describe('HomePage', () => {
     expect(applyButton.getAttribute('href')).toBe('/postuler');
   });
 
+  it('makes the UGB and Sanar context visible without presenting archive photos as the event', async () => {
+    await TestBed.configureTestingModule({
+      imports: [HomePage],
+      providers: [provideRouter([])],
+    }).compileComponents();
+
+    const fixture = TestBed.createComponent(HomePage);
+    fixture.detectChanges();
+    const page = fixture.nativeElement as HTMLElement;
+
+    expect(page.textContent).toContain('SANAR');
+    expect(page.textContent).toContain('UNIVERSITÉ GASTON BERGER');
+    expect(page.querySelector('img[src="images/ugb-bibliotheque.webp"]')?.getAttribute('alt')).toContain('Vue d’archives');
+  });
+
   it('tracks scrolling while keeping the inverse brand readable on the dark header', async () => {
     await TestBed.configureTestingModule({
       imports: [HomePage],

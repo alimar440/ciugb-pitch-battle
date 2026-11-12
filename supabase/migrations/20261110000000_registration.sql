@@ -106,7 +106,7 @@ declare
   v_leader_count integer;
   v_size integer;
 begin
-  select c, s into v_contest, v_settings
+  select c.* into v_contest
   from public.contests c join public.contest_settings s on s.contest_id = c.id
   where s.registration_open
     and (s.registration_deadline is null or s.registration_deadline >= current_date)
@@ -114,6 +114,7 @@ begin
     and s.rules_text is not null and s.rules_version is not null
     and s.privacy_notice_text is not null and s.privacy_notice_version is not null
   order by c.created_at desc limit 1;
+  select s.* into v_settings from public.contest_settings s where s.contest_id = v_contest.id;
   if v_contest.id is null then raise exception 'REGISTRATION_CLOSED'; end if;
   if p_rules_version <> v_settings.rules_version or p_privacy_version <> v_settings.privacy_notice_version then raise exception 'TERMS_UPDATED'; end if;
   if jsonb_typeof(v_members) <> 'array' then raise exception 'INVALID_MEMBERS'; end if;

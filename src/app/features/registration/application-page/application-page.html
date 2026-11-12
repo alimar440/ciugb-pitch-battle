@@ -70,7 +70,9 @@
           }
           <label class="consent"><input type="checkbox" formControlName="rulesAccepted" /> J’accepte le règlement affiché ci-dessus. *</label>
           <label class="consent"><input type="checkbox" formControlName="privacyAccepted" /> J’ai lu et j’accepte la notice de confidentialité affichée ci-dessus. *</label>
+          <label class="consent"><input type="checkbox" formControlName="finalistPublicationConsent" /> Si notre équipe est sélectionnée, j’autorise la publication du nom de l’équipe, du titre, du résumé et de la catégorie du projet. (facultatif)</label>
           <div id="turnstile-widget" class="challenge-widget" aria-label="Vérification anti-robot"></div>
+          @if (challengeError()) { <p class="field-error" role="alert">{{ challengeError() }}</p> }
           <label class="honeypot" aria-hidden="true">Ne pas remplir<input formControlName="website" tabindex="-1" autocomplete="off" /></label>
         </section>
       }
@@ -79,7 +81,7 @@
       <div class="form-actions">
         @if (step() > 0) { <button class="secondary-button" type="button" (click)="previous()">Précédent</button> }
         @if (step() < 2) { <button class="primary-button" type="button" (click)="next()">Continuer</button> }
-        @if (step() === 2) { <button class="primary-button" type="submit" [disabled]="busy() || !configured || !registrationInfo()?.registrationOpen || !registrationInfo()?.rulesText || !registrationInfo()?.privacyText || !challengeToken">{{ busy() ? 'Envoi en cours…' : 'Envoyer la candidature' }}</button> }
+        @if (step() === 2) { <button class="primary-button" type="submit" [disabled]="busy() || !configured || !registrationInfo()?.registrationOpen || !registrationInfo()?.rulesText || !registrationInfo()?.privacyText || !challengeToken()">{{ busy() ? 'Envoi en cours…' : 'Envoyer la candidature' }}</button> }
       </div>
     </form>
   }

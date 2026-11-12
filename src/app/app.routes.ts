@@ -24,6 +24,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'admin',
+    loadComponent: () =>
+      import('./features/admin/admin-page/admin-page').then(
+        (module) => module.AdminPage,
+      ),
+  },
+  {
     path: '404',
     loadComponent: () =>
       import('./features/public/not-found-page/not-found-page').then(

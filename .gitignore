@@ -15,6 +15,7 @@ yarn-error.log
 .env
 .env.*
 !.env.example
+/supabase/.temp/
 
 # IDEs and editors
 .idea/
