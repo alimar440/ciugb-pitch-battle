@@ -51,8 +51,10 @@
       @if (step() === 1) {
         <section aria-labelledby="project-title-heading">
           <h2 id="project-title-heading">Votre projet</h2>
-          <label>Nom du projet *<input formControlName="projectTitle" maxlength="160" required /></label>
-          <label>Catégorie (facultatif)<input formControlName="category" maxlength="100" /></label>
+           <div class="lab-cat"> 
+               <label>Nom du projet *<input formControlName="projectTitle" maxlength="160" required class="input-lab-cat" /></label>
+               <label>Catégorie (facultatif)<input formControlName="category" maxlength="100" class="input-lab-cat"  /></label>
+           </div>
           <label>Résumé du projet *<textarea formControlName="summary" rows="4" maxlength="1000" required></textarea><span class="field-hint">1 000 caractères maximum.</span></label>
           <label>Problématique adressée *<textarea formControlName="problem" rows="4" maxlength="2000" required></textarea><span class="field-hint">2 000 caractères maximum.</span></label>
           <label>Solution proposée *<textarea formControlName="solution" rows="4" maxlength="2000" required></textarea><span class="field-hint">2 000 caractères maximum.</span></label>
