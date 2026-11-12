@@ -17,10 +17,10 @@ export const publicContent = {
   eventContext: 'Les 72H du CIUGB · troisième jour',
   heroDescription:
     'Le Pitch Battle donne aux équipes l’occasion de présenter leur projet. Les organisateurs examineront les candidatures et retiendront les finalistes qui pitcheront le troisième jour des 72H du CIUGB.',
-  eventDate: 'À annoncer',
-  registrationDeadline: 'À annoncer',
-  venue: 'À annoncer',
-  eligibility: 'À préciser dans le règlement',
+  eventDate: '29 novembre 2026',
+  registrationDeadline: '25 novembre 2026',
+  venue: 'Incubateur',
+  eligibility: 'Équipe de 1 à 5 membres · projet original',
   committeeContact: 'À annoncer',
   navigation: [
     { label: 'Le concept', href: '#concept' },
@@ -47,35 +47,35 @@ export const publicContent = {
       number: '1',
       title: 'Déposer une candidature',
       description: 'Présentez votre équipe et votre projet à travers le formulaire officiel.',
-      note: 'Ouverture : à annoncer',
+      note: 'Dépôt jusqu’au 25 novembre 2026',
     },
     {
       number: '2',
       title: 'Laisser place à l’examen',
-      description: 'Les organisateurs examinent les dossiers et présélectionnent les équipes.',
-      note: 'Modalités : à annoncer',
+      description: 'Les organisateurs examinent les dossiers et sélectionnent les équipes.',
+      note: 'Résultats communiqués par le CIUGB',
     },
     {
       number: '3',
       title: 'Monter sur scène',
       description: 'Les finalistes retenus présentent leur projet le jour du Pitch Battle.',
-      note: 'Date et lieu : à annoncer',
+      note: '29 novembre 2026 · Incubateur',
     },
   ],
   faqs: [
     {
       question: 'Qui peut présenter un projet ?',
       answer:
-        'Les conditions d’éligibilité seront précisées dans le règlement officiel avant l’ouverture des candidatures.',
+        'Toute équipe de 1 à 5 membres peut déposer un projet original, présenté de bonne foi et respectueux des règles de l’Université.',
     },
     {
       question: 'Combien de personnes peuvent former une équipe ?',
       answer:
-        'La taille minimale et maximale sera annoncée par le comité. Le responsable de candidature sera identifié dans l’équipe.',
+        'Une équipe compte de 1 à 5 membres. Un membre est désigné comme responsable de candidature et sert de contact pour le comité.',
     },
     {
       question: 'Quand et où aura lieu le Pitch Battle ?',
-      answer: 'La date et le lieu seront annoncés par les organisateurs.',
+      answer: 'Le Pitch Battle aura lieu le 29 novembre 2026 à l’Incubateur. Les candidatures sont attendues au plus tard le 25 novembre 2026.',
     },
     {
       question: 'Où consulter les équipes finalistes ?',
