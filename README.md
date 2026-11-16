@@ -30,3 +30,12 @@ Le code Angular est organisé par domaines : `core/` pour les services et gardes
 ## Sécurité
 
 Ne jamais stocker de clés secrètes dans le code client ou dans le dépôt. Les fichiers `.env` locaux sont ignorés par Git ; toute donnée consommée par Angular est publique par nature. Les accès aux candidatures doivent être protégés par Supabase RLS et par des opérations serveur autorisées.
+# CI/CD
+
+Chaque push et pull request vers `main` lance les tests Angular et le build. Après un push réussi sur `main`, GitHub Actions déploie automatiquement `dist/ciugb-pitch-battle/browser` vers Cloudflare Pages.
+
+Dans **GitHub → Settings → Secrets and variables → Actions**, ajoutez :
+
+- `CLOUDFLARE_API_TOKEN` : token Cloudflare limité à Cloudflare Pages:Edit pour ce compte.
+- `CLOUDFLARE_ACCOUNT_ID` : identifiant du compte Cloudflare qui héberge `ciugb-pitch-battle`.
+
