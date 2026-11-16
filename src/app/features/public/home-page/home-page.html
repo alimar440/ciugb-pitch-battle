@@ -40,7 +40,7 @@
   </section>
 
   <section class="pitch-section section-shell" aria-labelledby="pitch-title">
-    <div class="pitch-heading"><p class="eyebrow">LE DÉFI DU WEEKEND TECH</p><h2 id="pitch-title">Allons à l’essentiel.</h2><p>Imaginez des solutions numériques innovantes pour simplifier les démarches, améliorer l’accès aux services et rendre le quotidien du campus plus fluide et accessible.</p></div>
+    <div class="pitch-heading"><p class="eyebrow">LE DÉFI DU WEEKEND TECH</p><h2 id="pitch-title">Allons à l’essentiel.</h2><p>Proposer des idées innovantes pour exploiter le potentiel du numérique et apporter des réponses concrètes aux défis du développement économique et social du Sénégal. </p></div>
     <div class="pitch-list">
       @for (item of content.pitchElements; track item.title; let index = $index) {
         <article class="pitch-item"><span class="pitch-index">0{{ index + 1 }}</span><h3>{{ item.title }}</h3><p>{{ item.description }}</p><span class="pitch-item-mark" aria-hidden="true">{{ index === 0 ? '?' : index === 1 ? '→' : '+' }}</span></article>
