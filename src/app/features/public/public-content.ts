@@ -14,9 +14,9 @@ export interface PublicFaqItem {
  */
 export const publicContent = {
   organizer: 'Club Informatique de l’Université Gaston Berger',
-  eventContext: 'Week-ends tech du CIUGB · troisième jour',
+  eventContext: 'Weekend Tech du CIUGB',
   heroDescription:
-    'Le Pitch Battle donne aux équipes l’occasion de présenter leur projet. Les organisateurs examineront les candidatures et retiendront les finalistes qui pitcheront le troisième jour des 72H du CIUGB.',
+    'Le Pitch Battle donne aux équipes l’occasion de présenter leur projet, de partager une solution numérique concrète et de défendre leur idée devant le comité.',
   eventDate: '29 novembre 2026',
   registrationDeadline: '22 novembre 2026',
   venue: 'Incubateur',
