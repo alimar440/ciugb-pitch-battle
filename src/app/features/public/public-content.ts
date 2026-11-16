@@ -18,7 +18,7 @@ export const publicContent = {
   heroDescription:
     'Le Pitch Battle donne aux équipes l’occasion de présenter leur projet. Les organisateurs examineront les candidatures et retiendront les finalistes qui pitcheront le troisième jour des 72H du CIUGB.',
   eventDate: '29 novembre 2026',
-  registrationDeadline: '25 novembre 2026',
+  registrationDeadline: '22 novembre 2026',
   venue: 'Incubateur',
   eligibility: 'Équipe de 1 à 5 membres · projet original',
   committeeContact: 'À annoncer',
