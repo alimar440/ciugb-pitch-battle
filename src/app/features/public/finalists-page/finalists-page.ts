@@ -19,7 +19,7 @@ interface Finalist { team_name: string; project_title: string; summary: string; 
       </header>
 
       <section class="selection-heading" aria-labelledby="finalists-title">
-        <p class="edition-line">72H DU CIUGB <span>SANAR · SAINT-LOUIS</span></p>
+        <p class="edition-line">WEEKEND TECH · CIUGB <span>SANAR · SAINT-LOUIS</span></p>
         <div class="title-layout">
           <h1 id="finalists-title">Les<br /><span>finalistes.</span></h1>
           <p class="selection-label">SÉLECTION<br />OFFICIELLE</p>

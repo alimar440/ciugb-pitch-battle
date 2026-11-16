@@ -6,7 +6,7 @@ import { getRuntimeConfig } from '../../../core/runtime-config';
 
 type Status = 'submitted' | 'under_review' | 'selected' | 'rejected';
 interface Application { id: string; reference: string; team_name: string; project_title: string; category: string | null; status: Status; created_at: string; }
-interface ApplicationDetail extends Application { summary: string; problem: string; solution: string; members: { full_name: string; is_leader: boolean; email: string | null; phone: string | null }[]; history: { from_status: Status | null; to_status: Status; created_at: string }[]; }
+interface ApplicationDetail extends Application { summary: string; problem: string; solution: string; members: { full_name: string; ufr: string | null; is_leader: boolean; email: string | null; phone: string | null }[]; history: { from_status: Status | null; to_status: Status; created_at: string }[]; }
 interface Settings { registrationOpen: boolean; finalistsPublished: boolean; minTeamSize: number; maxTeamSize: number; rulesText: string; rulesVersion: string; privacyText: string; privacyVersion: string; }
 interface Dashboard { registrationOpen: boolean; finalistsPublished: boolean; counts: { total: number; submitted: number; underReview: number; shortlisted: number; selected: number }; }
 
