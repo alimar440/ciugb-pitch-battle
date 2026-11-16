@@ -59,7 +59,7 @@ button:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px soli
 .hero-topline { display: flex; justify-content: space-between; gap: 20px; }
 .hero-topline p { margin: 0; color: #a6a39c; font-size: 9px; font-weight: 550; letter-spacing: .17em; }
 .hero-stage { position: relative; margin-top: 37px; }
-.hero h1 { position: relative; z-index: 2; margin: 0; font-family: var(--font-display); font-size: clamp(150px, 20.2vw, 290px); font-weight: 400; line-height: .91; letter-spacing: -.025em; }
+.hero h1 { position: relative; z-index: 2; margin: 0; font-family: var(--font-display); font-size: clamp(118px, 15.5vw, 224px); font-weight: 400; line-height: .91; letter-spacing: -.025em; }
 .hero h1 > span { display: block; width: fit-content; }
 .title-battle { padding-top: .04em; margin-left: 17.7%; color: var(--red-bright); }
 .title-period { color: var(--paper); }
@@ -73,7 +73,8 @@ button:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px soli
 .hero-day > span { font-size: 8px; line-height: 1.6; letter-spacing: .1em; color: #bcb8b1; }
 .hero-day > strong { font-family: var(--font-display); font-weight: 400; font-size: 63px; line-height: 1; }
 .hero-bottom { display: grid; grid-template-columns: 1fr 1.3fr .9fr; gap: 7%; align-items: center; margin-top: 45px; padding: 30px 0 40px; border-top: 1px solid #45423d; }
-.hero-hook { margin: 0; font-size: 24px; font-weight: 550; line-height: 1.25; letter-spacing: -.035em; }
+.hero-hook { margin: 0; display: grid; gap: 8px; font-size: clamp(24px, 2.1vw, 32px); font-weight: 550; line-height: 1.16; letter-spacing: -.04em; }
+.hero-hook > span { color: #bcb8b1; font-size: 9px; font-weight: 700; letter-spacing: .15em; }
 .hero-hook em { color: #e1576a; font-style: normal; }
 .hero-description { max-width: 400px; margin: 0; font-size: 13px; line-height: 1.9; color: #bcb8b1; }
 .hero-actions { display: grid; gap: 16px; }
@@ -210,7 +211,7 @@ h2 { margin: 0; font-weight: 550; line-height: 1.06; letter-spacing: -.045em; }
   .hero-topline p { font-size: 7px; letter-spacing: .08em; }
   .hero-topline p:last-child { max-width: 130px; text-align: right; }
   .hero-stage { margin-top: 52px; padding-bottom: 78px; }
-  .hero h1 { font-size: 23vw; line-height: 1.02; }
+  .hero h1 { font-size: 19vw; line-height: 1.02; }
   .title-battle { padding-top: .1em; margin-left: 8%; }
   .hero-art { top: -7%; right: -23%; width: 115%; height: 110%; }
   .campus-hero-image { object-position: 52% 45%; }
@@ -220,7 +221,8 @@ h2 { margin: 0; font-weight: 550; line-height: 1.06; letter-spacing: -.045em; }
   .hero-day > strong { font-size: 43px; }
   .hero-day > span { font-size: 6px; }
   .hero-bottom { grid-template-columns: 1fr 1fr; gap: 25px 28px; margin-top: 28px; padding: 25px 0 30px; }
-  .hero-hook { font-size: 22px; }
+  .hero-hook { font-size: 21px; }
+  .hero-hook > span { font-size: 7px; }
   .hero-description { font-size: 12px; line-height: 1.8; }
   .hero-actions { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; align-items: center; gap: 28px; }
   .button { min-height: 54px; padding-inline: 16px; gap: 15px; font-size: 13px; }

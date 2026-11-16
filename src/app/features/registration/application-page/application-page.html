@@ -38,6 +38,7 @@
               <fieldset [formGroupName]="index" class="member-card">
                 <legend>{{ index === 0 ? 'Responsable de candidature' : 'Membre ' + (index + 1) }}{{ index === 0 ? ' *' : '' }}</legend>
                 <label>Nom complet *<input formControlName="fullName" autocomplete="name" maxlength="160" required /></label>
+                <label>UFR *<input formControlName="ufr" autocomplete="organization" maxlength="160" required /></label>
                 <label>Adresse e-mail {{ index === 0 ? '*' : '' }}<input formControlName="email" type="email" autocomplete="email" maxlength="254" [required]="index === 0" /></label>
                 <label>Téléphone {{ index === 0 ? '*' : '' }}<input formControlName="phone" type="tel" autocomplete="tel" maxlength="40" [required]="index === 0" /></label>
                 @if (index > 0) { <button class="remove-member" type="button" (click)="removeMember(index)">Retirer ce membre</button> }

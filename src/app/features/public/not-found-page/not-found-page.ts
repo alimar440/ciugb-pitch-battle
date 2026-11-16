@@ -13,7 +13,7 @@ import { RouterLink } from '@angular/router';
         <div class="error-copy">
           <p class="eyebrow">Erreur 404</p>
           <h1>Cette page<br />n’existe pas.</h1>
-          <p class="description">Cette adresse ne correspond à aucune page du site. Retrouvez le Pitch Battle des 72H du CIUGB à l’accueil.</p>
+          <p class="description">Cette adresse ne correspond à aucune page du site. Retrouvez le Pitch Battle du Weekend Tech du CIUGB à l’accueil.</p>
           <a class="home-link" routerLink="/">Revenir au concours <span aria-hidden="true">↗</span></a>
         </div>
       </div>

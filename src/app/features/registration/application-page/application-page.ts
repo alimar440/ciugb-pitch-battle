@@ -186,6 +186,7 @@ export class ApplicationPage {
   private createMember(isLeader: boolean) {
     return new FormBuilder().group({
       fullName: ['', [Validators.required, Validators.maxLength(160)]],
+      ufr: ['', [Validators.required, Validators.maxLength(160)]],
       email: [isLeader ? '' : '', isLeader ? [Validators.required, Validators.email, Validators.maxLength(254)] : [Validators.email, Validators.maxLength(254)]],
       phone: ['', isLeader ? [Validators.required, Validators.maxLength(40)] : Validators.maxLength(40)],
       isLeader: [isLeader],

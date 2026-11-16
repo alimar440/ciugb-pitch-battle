@@ -81,6 +81,7 @@ Deno.serve(async (request) => {
     const leaders = members.filter((member) => member && member['isLeader'] === true);
     if (leaders.length !== 1) return response({ error: 'Désignez un seul responsable de candidature.' }, 422);
     for (const member of members) {
+      if (typeof member?.['ufr'] !== 'string' || !member['ufr'].trim() || member['ufr'].length > 160) return response({ error: 'UFR invalide pour un membre.' }, 422);
       if (!member || typeof member['fullName'] !== 'string' || !member['fullName'].trim() || member['fullName'].length > 160) return response({ error: 'Vérifiez les noms des membres.' }, 422);
     }
     const leader = leaders[0];

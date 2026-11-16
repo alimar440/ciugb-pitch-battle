@@ -53,7 +53,7 @@ Deno.serve(async (request) => {
     if (id) {
       const [{ data: application, error: applicationError }, { data: members, error: membersError }, { data: history, error: historyError }] = await Promise.all([
         service.from('applications').select('id,reference,team_name,project_title,summary,problem,solution,category,status,created_at').eq('id', id).maybeSingle(),
-        service.from('team_members').select('full_name,is_leader,email,phone').eq('application_id', id).order('is_leader', { ascending: false }),
+        service.from('team_members').select('full_name,ufr,is_leader,email,phone').eq('application_id', id).order('is_leader', { ascending: false }),
         service.from('status_history').select('from_status,to_status,created_at').eq('application_id', id).order('created_at', { ascending: false }),
       ]);
       if (applicationError || membersError || historyError || !application) return reply(request, { error: 'Lecture du dossier impossible.' }, 404);
